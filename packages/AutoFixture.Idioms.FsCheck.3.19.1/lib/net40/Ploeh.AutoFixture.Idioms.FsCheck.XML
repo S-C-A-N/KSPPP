@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doc>
+<assembly><name>Ploeh.AutoFixture.Idioms.FsCheck</name></assembly>
+<members>
+<member name="">
+
+</member>
+<member name="P:Ploeh.AutoFixture.Idioms.FsCheck.ReturnValueMustNotBeNullAssertion.Builder">
+<summary>
+ Gets the &lt;see cref=&quot;ISpecimenBuilder&quot;/&gt; which create instances if the
+ public Query is an instance method.
+</summary>
+</member>
+<member name="M:Ploeh.AutoFixture.Idioms.FsCheck.ReturnValueMustNotBeNullAssertion.Verify(System.Reflection.MethodInfo)">
+ <summary>
+ Verifies that the return value for a method is not null.
+ </summary>
+ <remarks>
+ <param name="methodInfo">The method to verify.</param>
+</member>
+<member name="M:Ploeh.AutoFixture.Idioms.FsCheck.ReturnValueMustNotBeNullAssertion.Verify(System.Reflection.PropertyInfo)">
+ <summary>
+ Verifies that the return value for a Property is not null.
+ </summary>
+ <param name="propertyInfo">The property to verify.</param>
+</member>
+<member name="">
+
+</member>
+<member name="T:Ploeh.AutoFixture.Idioms.FsCheck.ReturnValueMustNotBeNullAssertion">
+ <summary>
+ Encapsulates a unit test verifying that the return value for a public Query
+ (a method that returns a value) is not null.
+ </summary>
+</member>
+<member name="">
+
+</member>
+<member name="T:Ploeh.AutoFixture.Idioms.FsCheck.ReturnValueMustNotBeNullException">
+ <summary>
+ Represents an error about a public Query (a method that returns a value)
+ with null return value.
+ </summary>
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="T:Ploeh.AutoFixture.Idioms.FsCheck.FsCheckInvoker">
+
+</member>
+</members>
+</doc>

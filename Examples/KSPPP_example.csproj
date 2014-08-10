@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{6E65E8AF-6823-4582-B4A3-D6BF58EA9A7E}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>Examples</RootNamespace>
+    <AssemblyName>KSPPP_examples</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <ReleaseVersion>0.0.24.0</ReleaseVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <DebugType>none</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\..\..\GameData\KSPPP</OutputPath>
+    <DefineConstants>DEBUG;</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ConsolePause>false</ConsolePause>
+    <PlatformTarget>x86</PlatformTarget>
+    <additionalargs>-debug:full</additionalargs>
+    <CustomCommands>
+      <CustomCommands>
+        <Command type="Clean" command="rm -rf obj bin" workingdir="${ProjectDir}" />
+      </CustomCommands>
+    </CustomCommands>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <DebugType>none</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>..\..\..\GameData\KSPPP</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ConsolePause>false</ConsolePause>
+    <PlatformTarget>x86</PlatformTarget>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <ItemGroup>
+    <Reference Include="UnityEngine">
+      <HintPath>..\..\..\KSP_Data\Managed\UnityEngine.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Assembly-CSharp">
+      <HintPath>..\..\..\KSP_Data\Managed\Assembly-CSharp.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Example1.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\KSPPP.csproj">
+      <Project>{1C67A590-9844-4ADB-BA84-99D6E996C446}</Project>
+      <Name>KSPPP</Name>
+      <Private>False</Private>
+    </ProjectReference>
+  </ItemGroup>
+</Project>

@@ -1,0 +1,7 @@
+/media/ssd/steam/SteamApps/common/Kerbal Space Program/GameData_Dev/KSPPP/KSPPP_quickcheck/bin/Debug/KSPPP_quickcheck.exe.mdb
+/media/ssd/steam/SteamApps/common/Kerbal Space Program/GameData_Dev/KSPPP/KSPPP_quickcheck/bin/Debug/KSPPP_quickcheck.exe
+/media/ssd/steam/SteamApps/common/Kerbal Space Program/GameData_Dev/KSPPP/KSPPP_quickcheck/obj/x86/Debug/KSPPP_quickcheck.exe
+/media/ssd/steam/SteamApps/common/Kerbal Space Program/GameData_Dev/KSPPP/KSPPP_quickcheck/obj/x86/Debug/KSPPP_quickcheck.exe.mdb
+/media/ssd/steam/SteamApps/common/Kerbal Space Program/GameData_Dev/KSPPP/KSPPP_quickcheck/bin/Debug/UnityEngine.dll
+/media/ssd/steam/SteamApps/common/Kerbal Space Program/GameData_Dev/KSPPP/KSPPP_quickcheck/bin/Debug/KSPPP.dll
+/media/ssd/steam/SteamApps/common/Kerbal Space Program/GameData_Dev/KSPPP/KSPPP_quickcheck/bin/Debug/LitJson.dll

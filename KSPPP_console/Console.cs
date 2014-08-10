@@ -12,13 +12,13 @@ using Event = UnityEngine.Event;
 
 namespace KSPPP
 {
-	public class NewDelegateReportPrinter : ReportPrinter
+	public class DelegateReportPrinter : ReportPrinter
 	{
 		public delegate void OnPrintDelegate(AbstractMessage msg, bool showFullPath);
 
 		public event OnPrintDelegate OnPrint;
 
-		public NewDelegateReportPrinter(OnPrintDelegate func)
+		public DelegateReportPrinter(OnPrintDelegate func)
 		{
 			OnPrint += func;
 		}
@@ -30,7 +30,7 @@ namespace KSPPP
 	}
 
 	[KSPAddon(KSPAddon.Startup.Instantly, true)]
-	public class NewEmbeddedCSharp : MBW 
+	public class EmbeddedCSharp : MonoBehaviour 
 	{
 		public string code = "public class Program {\n\tpublic static string Test() {\n\t\treturn \"Hello world!\";\n\t}\n}";
 		public string codeLine = "Program.Test();";
@@ -43,27 +43,17 @@ namespace KSPPP
 
 		public int historyPos = 0;
 
-		// FIXME: no longer needed public Rect winPos = new Rect();
+		public Rect winPos = new Rect();
 		public Vector2 codePos = new Vector2();
 		public Vector2 consolePos = new Vector2();
+		public bool hidden = false;
 		public bool coloring = true;
 
 		Evaluator evaluator;
-		static NewEmbeddedCSharp instance;
+		static EmbeddedCSharp instance;
 
 		FileBrowser fb;
 		Texture2D whiteBG;
-
-		protected override void Awake()
-		{
-			WindowCaption	= "Console";
-			Visible = false;
-			WindowRect = new Rect (UnityEngine.Random.Range (100, 800), UnityEngine.Random.Range (100, 800), 300, 300);
-			ClampEnabled = true;
-			DragEnabled = true;
-			TooltipsEnabled = true;
-			ResizeEnabled = true;
-		}
 
 		void Start()
 		{
@@ -98,7 +88,7 @@ namespace KSPPP
 				CompilerSettings cs = new CompilerSettings();
 				cs.AssemblyReferences = (new string[] { "System.dll", "System.Core.dll", "Assembly-CSharp.dll", "Assembly-CSharp-firstpass.dll", "UnityEngine.dll", "KSPPP.dll" }).ToList();
 				//cs.Version = LanguageVersion.V_3;
-				evaluator = new Evaluator(new CompilerContext(cs, new NewDelegateReportPrinter(Log)));
+				evaluator = new Evaluator(new CompilerContext(cs, new DelegateReportPrinter(Log)));
 				evaluator.ReferenceAssembly(Assembly.GetCallingAssembly());
 				/*
                 foreach (Assembly a in AppDomain.CurrentDomain.GetAssemblies())
@@ -108,22 +98,22 @@ namespace KSPPP
                 }
                 */
 
-				if (File.Exists(KSP.IO.IOUtils.GetFilePathFor(typeof(NewEmbeddedCSharp), "autorun.cs")))
+				if (File.Exists(KSP.IO.IOUtils.GetFilePathFor(typeof(EmbeddedCSharp), "autorun.cs")))
 				{
-					code = File.ReadAllText(KSP.IO.IOUtils.GetFilePathFor(typeof(NewEmbeddedCSharp), "autorun.cs"));
+					code = File.ReadAllText(KSP.IO.IOUtils.GetFilePathFor(typeof(EmbeddedCSharp), "autorun.cs"));
 				}
 			}
 			if (Input.GetKeyDown(hotkey))
-				Visible = !Visible;
+				hidden = !hidden;
 			//if (Input.GetKeyDown(KeyCode.Alpha8) && (Input.GetKey(KeyCode.LeftAlt) || Input.GetKey(KeyCode.RightAlt))) { hidden = !hidden; }
 		}
 
 		void OnGUI()
 		{
-			if (!Visible)
+			if (!hidden)
 			{
-				//GUI.skin = AssetBase.GetGUISkin("KSP window 7");
-				//winPos = GUILayout.Window(8935, winPos, drawWindow, "MuMech Embedded C# Console");
+				GUI.skin = AssetBase.GetGUISkin("KSP window 7");
+				winPos = GUILayout.Window(8935, winPos, WindowGUI, "MuMech Embedded C# Console");
 				if (fb != null)
 				{
 					fb.OnGUI();
@@ -131,15 +121,16 @@ namespace KSPPP
 			}
 		}
 
-		protected override void DrawWindow(int wID)
+		void WindowGUI(int wID)
 		{
-			growE();
+			GUILayout.BeginHorizontal();
 
-			fileName = GUILayout.TextField(fileName, GoE());
+			fileName = GUILayout.TextField(fileName, GUILayout.ExpandWidth(true));
+
 			#region save button
 			if (GUILayout.Button("Save", GUILayout.Width(50)))
 			{
-				File.WriteAllText(KSP.IO.IOUtils.GetFilePathFor(typeof(NewEmbeddedCSharp), fileName + ".cs"), code);
+				File.WriteAllText(KSP.IO.IOUtils.GetFilePathFor(typeof(EmbeddedCSharp), fileName + ".cs"), code);
 			}
 			#endregion
 			#region load button
@@ -147,14 +138,15 @@ namespace KSPPP
 			{
 				fb = new FileBrowser(new Rect(Screen.width / 4, Screen.height / 4, Screen.width / 2, Screen.height / 2), "Load .cs file", FileSelectedCallback);
 				fb.BrowserType = FileBrowserType.File;
-				fb.CurrentDirectory = KSP.IO.IOUtils.GetFilePathFor(typeof(NewEmbeddedCSharp), "");
+				fb.CurrentDirectory = KSP.IO.IOUtils.GetFilePathFor(typeof(EmbeddedCSharp), "");
 				fb.SelectionPattern = "*.cs";
 			}
 			#endregion
-			stopE();
+
+			GUILayout.EndHorizontal();
 
 			#region code entry
-			codePos = GUILayout.BeginScrollView(codePos, GUILayout.Height(200), GoE());
+			codePos = GUILayout.BeginScrollView(codePos, GoE(), GoS());
 
 			if (Event.current.type == EventType.KeyDown)
 			{
@@ -181,7 +173,7 @@ namespace KSPPP
 
 				textStyle.normal.background = whiteBG;
 
-				formattedCode = GUILayout.TextArea(formattedCode, textStyle, GoE(), GoS());
+				formattedCode = GUILayout.TextArea(formattedCode, textStyle, GUILayout.ExpandWidth(true), GUILayout.ExpandHeight(true));
 
 				//code = System.Web.Util.HttpEncoder.HtmlDecode(Regex.Replace(formattedCode, @"<[^>]*(>|$)", string.Empty));
 				/*
@@ -191,17 +183,18 @@ namespace KSPPP
 			}
 			else
 			{
-				code = GUILayout.TextArea(code, textStyle, GoE(), GoS());
+				code = GUILayout.TextArea(code, textStyle, GUILayout.ExpandWidth(true), GUILayout.ExpandHeight(true));
 			}
 			GUILayout.EndScrollView();
 			#endregion
 			#region output
-			consolePos = GUILayout.BeginScrollView(consolePos, GoE(), GoS());
-			console = GUILayout.TextArea(console, GoE() , GoS());
+			consolePos = GUILayout.BeginScrollView(consolePos, GUILayout.Width(500), GUILayout.Height(100));
+			console = GUILayout.TextArea(console, GUILayout.ExpandWidth(true), GUILayout.ExpandHeight(true));
 			GUILayout.EndScrollView();
 			#endregion
 
-			growE();
+
+			GUILayout.BeginHorizontal(GUILayout.ExpandWidth(true));
 			#region input
 			if (Event.current.type == EventType.KeyDown)
 			{
@@ -236,7 +229,7 @@ namespace KSPPP
 					break;
 				}
 			}
-			codeLine = GUILayout.TextField(codeLine, GoE());
+			codeLine = GUILayout.TextField(codeLine, GUILayout.ExpandWidth(true));
 			#endregion
 			#region execute button
 			if (GUILayout.Button("Execute", GUILayout.Width(75)))
@@ -244,9 +237,8 @@ namespace KSPPP
 				RunCode();
 			}
 			#endregion
-			stopE();
-
-			// FIXME: Not needed, prevents resizing. GUI.DragWindow();
+			GUILayout.EndHorizontal();
+			GUI.DragWindow();
 		}
 
 		void RunCode()
@@ -278,7 +270,7 @@ namespace KSPPP
 						default:	Log(result.ToString()); break;
 						}
 					}
-					//codeLine = "";
+					codeLine = "";
 				}
 				string[] lines = console.Split('\n');
 				if (lines.Length > 50)

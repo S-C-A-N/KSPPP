@@ -1,0 +1,22 @@
+﻿<Properties GitUserInfo="UsingGIT">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Release|x86" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="inspect-and-use/Prelude.cs">
+    <Files>
+      <File FileName="Icons.cs" Line="1" Column="1" />
+      <File FileName="Examples/Example1.cs" Line="163" Column="18" />
+      <File FileName="TextureScale.cs" Line="136" Column="5" />
+      <File FileName="inspect-and-use/BiMap.cs" Line="5" Column="16" />
+      <File FileName="inspect-and-use/FuncExt.cs" Line="1" Column="1" />
+      <File FileName="inspect-and-use/GameObjExts.cs" Line="1" Column="1" />
+      <File FileName="inspect-and-use/IEnumerableExts.cs" Line="205" Column="26" />
+      <File FileName="inspect-and-use/ASync.cs" Line="13" Column="20" />
+      <File FileName="inspect-and-use/Prelude.cs" Line="260" Column="25" />
+      <File FileName="inspect-and-use/Observable.cs" Line="16" Column="53" />
+      <File FileName="inspect-and-use/Option.cs" Line="20" Column="33" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+</Properties>

@@ -1,0 +1,2 @@
+/media/ssd/steam/SteamApps/common/Kerbal Space Program/GameData_Dev/KSPPP/KSPPP_quickcheck/bin/Release/KSPPP_quickcheck.exe
+/media/ssd/steam/SteamApps/common/Kerbal Space Program/GameData_Dev/KSPPP/KSPPP_quickcheck/obj/x86/Release/KSPPP_quickcheck.exe

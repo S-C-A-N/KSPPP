@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{B2B177F9-5080-4EDE-9865-321F3697E327}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>quickcheck</RootNamespace>
+    <AssemblyName>quickcheck</AssemblyName>
+    <ReleaseVersion>0.0.24.0</ReleaseVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug</OutputPath>
+    <DefineConstants>DEBUG</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <ConsolePause>false</ConsolePause>
+    <Tailcalls>false</Tailcalls>
+    <PlatformTarget>
+    </PlatformTarget>
+    <CustomCommands>
+      <CustomCommands>
+        <Command type="Clean" command="rm -rf bin obj" workingdir="${ProjectDir}" />
+      </CustomCommands>
+    </CustomCommands>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <PlatformTarget>
+    </PlatformTarget>
+    <ConsolePause>false</ConsolePause>
+    <Tailcalls>true</Tailcalls>
+    <DefineConstants>
+    </DefineConstants>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="mscorlib" />
+    <Reference Include="FSharp.Core" />
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="nunit.framework" />
+    <Reference Include="Assembly-CSharp">
+      <HintPath>..\..\..\KSP_Data\Managed\Assembly-CSharp.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine">
+      <HintPath>..\..\..\KSP_Data\Managed\UnityEngine.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="FsCheck">
+      <HintPath>..\packages\FsCheck.0.9.4.0\lib\net40-Client\FsCheck.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Test.fs" />
+    <Compile Include="Color.fs" />
+    <Compile Include="Color32.fs" />
+    <Compile Include="ColorHSV.fs" />
+    <Compile Include="Palette.fs" />
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath32)\..\Microsoft SDKs\F#\3.1\Framework\v4.0\Microsoft.FSharp.Targets" />
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\KSPPP.csproj">
+      <Project>{1C67A590-9844-4ADB-BA84-99D6E996C446}</Project>
+      <Name>KSPPP</Name>
+      <Private>False</Private>
+    </ProjectReference>
+  </ItemGroup>
+</Project>

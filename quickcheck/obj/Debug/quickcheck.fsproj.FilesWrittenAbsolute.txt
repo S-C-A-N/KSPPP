@@ -1,0 +1,7 @@
+/media/ssd/steam/SteamApps/common/Kerbal Space Program/GameData_Dev/KSPPP/quickcheck/obj/Debug/.NETFramework,Version=v4.0.AssemblyAttribute.fs
+/media/ssd/steam/SteamApps/common/Kerbal Space Program/GameData_Dev/KSPPP/quickcheck/bin/Debug/quickcheck.dll.mdb
+/media/ssd/steam/SteamApps/common/Kerbal Space Program/GameData_Dev/KSPPP/quickcheck/bin/Debug/quickcheck.dll
+/media/ssd/steam/SteamApps/common/Kerbal Space Program/GameData_Dev/KSPPP/quickcheck/obj/Debug/quickcheck.dll
+/media/ssd/steam/SteamApps/common/Kerbal Space Program/GameData_Dev/KSPPP/quickcheck/obj/Debug/quickcheck.dll.mdb
+/media/ssd/steam/SteamApps/common/Kerbal Space Program/GameData_Dev/KSPPP/quickcheck/bin/Debug/UnityEngine.dll
+/media/ssd/steam/SteamApps/common/Kerbal Space Program/GameData_Dev/KSPPP/quickcheck/bin/Debug/FsCheck.dll

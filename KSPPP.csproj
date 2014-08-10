@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{1C67A590-9844-4ADB-BA84-99D6E996C446}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>KSPPP</RootNamespace>
+    <AssemblyName>KSPPP</AssemblyName>
+    <ReleaseVersion>0.0.24.0</ReleaseVersion>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <DebugType>none</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\..\GameData\KSPPP</OutputPath>
+    <DefineConstants>DEBUG;</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ConsolePause>false</ConsolePause>
+    <PlatformTarget>x86</PlatformTarget>
+    <additionalargs>-debug:full</additionalargs>
+    <CustomCommands>
+      <CustomCommands>
+        <Command type="Clean" command="rm -rf obj bin" workingdir="${ProjectDir}" />
+      </CustomCommands>
+    </CustomCommands>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <DebugType>none</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\..\GameData\KSPPP</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ConsolePause>false</ConsolePause>
+    <PlatformTarget>x86</PlatformTarget>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <ItemGroup>
+    <Compile Include="SkinsLibrary.cs" />
+    <Compile Include="MBE.cs" />
+    <Compile Include="MBW.cs" />
+    <Compile Include="Overrides\FastMonoBehavior.cs" />
+    <Compile Include="Palette.cs" />
+    <Compile Include="Palettes.cs" />
+    <Compile Include="Extensions\GUI\UnityEngine.GUI_.cs" />
+    <Compile Include="Extensions\GUI\UnityEngine.GUIContent_.cs" />
+    <Compile Include="Extensions\GUI\UnityEngine.GUIElement_.cs" />
+    <Compile Include="Extensions\GUI\UnityEngine.GUILayer_.cs" />
+    <Compile Include="Extensions\GUI\UnityEngine.GUILayout_.cs" />
+    <Compile Include="Extensions\GUI\UnityEngine.GUILayoutOption_.cs" />
+    <Compile Include="Extensions\GUI\UnityEngine.GUILayoutUtility_.cs" />
+    <Compile Include="Extensions\GUI\UnityEngine.GUISettings_.cs" />
+    <Compile Include="Extensions\GUI\UnityEngine.GUISkin_.cs" />
+    <Compile Include="Extensions\GUI\UnityEngine.GUIStyle_.cs" />
+    <Compile Include="Extensions\GUI\UnityEngine.GUIStyleState_.cs" />
+    <Compile Include="Extensions\GUI\UnityEngine.GUIText_.cs" />
+    <Compile Include="Extensions\GUI\UnityEngine.GUITexture_.cs" />
+    <Compile Include="Extensions\GUI\UnityEngine.GUIUtility_.cs" />
+    <Compile Include="Extensions\Colors\UnityEngine.Color_.cs" />
+    <Compile Include="Extensions\Colors\UnityEngine.Color32_.cs" />
+    <Compile Include="Extensions\Colors\UnityEngine.Gradient_.cs" />
+    <Compile Include="Extensions\Colors\UnityEngine.GradientAlphaKey_.cs" />
+    <Compile Include="Extensions\Colors\UnityEngine.GradientColorKey_.cs" />
+    <Compile Include="Extensions\Text\UnityEngine.Font_.cs" />
+    <Compile Include="Extensions\Text\UnityEngine.TextGenerationSettings_.cs" />
+    <Compile Include="Extensions\Text\UnityEngine.TextGenerator_.cs" />
+    <Compile Include="Extensions\Text\UnityEngine.TextMesh_.cs" />
+    <Compile Include="Extensions\Math\UnityEngine.Mathf_.cs" />
+    <Compile Include="Extensions\Math\UnityEngine.Matrix4x4_.cs" />
+    <Compile Include="Extensions\Math\UnityEngine.Random_.cs" />
+    <Compile Include="Extensions\Math\UnityEngine.Rect_.cs" />
+    <Compile Include="Extensions\Math\UnityEngine.RectOffset_.cs" />
+    <Compile Include="Extensions\Math\UnityEngine.Vector2_.cs" />
+    <Compile Include="Extensions\Math\UnityEngine.Vector3_.cs" />
+    <Compile Include="Extensions\Math\UnityEngine.Vector4_.cs" />
+    <Compile Include="Extensions\Rendering\UnityEngine.Mesh_.cs" />
+    <Compile Include="Extensions\Rendering\UnityEngine.RenderSettings_.cs" />
+    <Compile Include="Extensions\Rendering\UnityEngine.Screen_.cs" />
+    <Compile Include="Extensions\Rendering\UnityEngine.Shader_.cs" />
+    <Compile Include="Extensions\Rendering\UnityEngine.SparseTexture_.cs" />
+    <Compile Include="Extensions\Rendering\UnityEngine.SpriteRenderer_.cs" />
+    <Compile Include="Extensions\Rendering\UnityEngine.Texture_.cs" />
+    <Compile Include="Extensions\Rendering\UnityEngine.Texture2D_.cs" />
+    <Compile Include="Extensions\Rendering\UnityEngine.Texture3D_.cs" />
+    <Compile Include="Extensions\Rendering\UnityEngine.UIVertex_.cs" />
+    <Compile Include="Extensions\Time\UnityEngine.Event_.cs" />
+    <Compile Include="Extensions\Time\UnityEngine.Time_.cs" />
+    <Compile Include="Extensions\Data\UnityEngine.SerializeFIeld_.cs" />
+    <Compile Include="Extensions\Rendering\UnityEngine.TreeInstance_.cs" />
+    <Compile Include="ConfigNodeStorage.cs" />
+    <Compile Include="Attributes\Bounds.cs" />
+    <Compile Include="Logging.cs" />
+    <Compile Include="VCR\InputVCR.cs" />
+    <Compile Include="VCR\Recording.cs" />
+    <Compile Include="Palettes\ColorBrewer\Include\Original.cs" />
+    <Compile Include="Palettes\ColorBrewer\ColorBrewer.cs" />
+    <Compile Include="Palettes\Solarized\Solarized.cs" />
+    <Compile Include="Palettes\Solarized\Include\Original.cs" />
+    <Compile Include="Swatches.cs" />
+    <Compile Include="UI\Layout.cs" />
+    <Compile Include="ColorModels\HSBA.cs" />
+    <Compile Include="ColorModels\HSVA.cs" />
+    <Compile Include="ColorModels\RGBAf.cs" />
+    <Compile Include="ColorModels\HSLA.cs" />
+    <Compile Include="ColorModels\RGBAb.cs" />
+    <Compile Include="ColorModels\CMYK.cs" />
+    <Compile Include="Icons.cs" />
+    <Compile Include="TextureScale.cs" />
+    <Compile Include="inspect-and-use\ASync.cs" />
+    <Compile Include="inspect-and-use\BiMap.cs" />
+    <Compile Include="inspect-and-use\ComponentExts.cs" />
+    <Compile Include="inspect-and-use\FuncExt.cs" />
+    <Compile Include="inspect-and-use\GameObjExts.cs" />
+    <Compile Include="inspect-and-use\IDictionary.cs" />
+    <Compile Include="inspect-and-use\IEnumerableExts.cs" />
+    <Compile Include="inspect-and-use\IListExts.cs" />
+    <Compile Include="inspect-and-use\MathExts.cs" />
+    <Compile Include="inspect-and-use\Prelude.cs" />
+    <Compile Include="inspect-and-use\ShaderUtils.cs" />
+    <Compile Include="inspect-and-use\Observable.cs" />
+    <Compile Include="inspect-and-use\RxList.cs" />
+    <Compile Include="inspect-and-use\RxListView.cs" />
+    <Compile Include="inspect-and-use\RxRef.cs" />
+    <Compile Include="inspect-and-use\Subscription.cs" />
+    <Compile Include="inspect-and-use\F.cs" />
+    <Compile Include="inspect-and-use\Functions.cs" />
+    <Compile Include="inspect-and-use\Lazy.cs" />
+    <Compile Include="inspect-and-use\Option.cs" />
+    <Compile Include="inspect-and-use\Tuple.cs" />
+    <Compile Include="inspect-and-use\Unit.cs" />
+    <Compile Include="inspect-and-use\Matching\Match.cs" />
+    <Compile Include="inspect-and-use\CoroutineHelperBehaviour.cs" />
+    <Compile Include="inspect-and-use\Future.cs" />
+    <Compile Include="inspect-and-use\ILinkedList.cs" />
+    <Compile Include="inspect-and-use\ReadOnlyLinkedList.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Assembly-CSharp">
+      <HintPath>..\..\KSP_Data\Managed\Assembly-CSharp.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine">
+      <HintPath>..\..\KSP_Data\Managed\UnityEngine.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="LitJson">
+      <HintPath>VCR\Includes\bin\LitJson.dll</HintPath>
+    </Reference>
+    <Reference Include="System">
+      <HintPath>..\..\..\..\..\..\..\..\opt\monodevelop\lib\mono\4.0\System.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Extensions\" />
+    <Folder Include="MBW\" />
+    <Folder Include="Overrides\" />
+    <Folder Include="Extensions\GUI\" />
+    <Folder Include="Extensions\Text\" />
+    <Folder Include="Extensions\Math\" />
+    <Folder Include="Extensions\Colors\" />
+    <Folder Include="Extensions\Rendering\" />
+    <Folder Include="Extensions\Time\" />
+    <Folder Include="Extensions\Data\" />
+    <Folder Include="Palettes\" />
+    <Folder Include="Palettes\ColorBrewer\" />
+    <Folder Include="Attributes\" />
+    <Folder Include="VCR\" />
+    <Folder Include="Palettes\ColorBrewer\Include\" />
+    <Folder Include="Palettes\Solarized\" />
+    <Folder Include="Palettes\Solarized\Include\" />
+    <Folder Include="UI\" />
+    <Folder Include="UI\Button\" />
+    <Folder Include="UI\Toolbar\" />
+    <Folder Include="UI\Toggle\" />
+    <Folder Include="UI\Window\" />
+    <Folder Include="UI\SelectionGrid\" />
+    <Folder Include="UI\RepeatButton\" />
+    <Folder Include="UI\PasswordField\" />
+    <Folder Include="UI\Label\" />
+    <Folder Include="UI\Box\" />
+    <Folder Include="UI\TextArea\" />
+    <Folder Include="UI\TextField\" />
+    <Folder Include="ColorModels\" />
+  </ItemGroup>
+  <ProjectExtensions>
+    <MonoDevelop>
+      <Properties>
+        <Policies>
+          <DotNetNamingPolicy DirectoryNamespaceAssociation="PrefixedHierarchical" ResourceNamePolicy="FileName" />
+        </Policies>
+      </Properties>
+    </MonoDevelop>
+  </ProjectExtensions>
+  <ItemGroup>
+    <None Include="octicons\octicons.png" />
+  </ItemGroup>
+</Project>

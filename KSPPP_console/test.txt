@@ -1,0 +1,123 @@
+15c15
+< 	public class DelegateReportPrinter : ReportPrinter
+---
+> 	public class NewDelegateReportPrinter : ReportPrinter
+21c21
+< 		public DelegateReportPrinter(OnPrintDelegate func)
+---
+> 		public NewDelegateReportPrinter(OnPrintDelegate func)
+33c33
+< 	public class EmbeddedCSharp : MonoBehaviour 
+---
+> 	public class NewEmbeddedCSharp : MBW 
+46c46
+< 		public Rect winPos = new Rect();
+---
+> 		// FIXME: no longer needed public Rect winPos = new Rect();
+49d48
+< 		public bool hidden = false;
+53c52
+< 		static EmbeddedCSharp instance;
+---
+> 		static NewEmbeddedCSharp instance;
+57a57,67
+> 		protected override void Awake()
+> 		{
+> 			WindowCaption	= "Console";
+> 			Visible = false;
+> 			WindowRect = new Rect (UnityEngine.Random.Range (100, 800), UnityEngine.Random.Range (100, 800), 300, 300);
+> 			ClampEnabled = true;
+> 			DragEnabled = true;
+> 			TooltipsEnabled = true;
+> 			ResizeEnabled = true;
+> 		}
+> 
+91c101
+< 				evaluator = new Evaluator(new CompilerContext(cs, new DelegateReportPrinter(Log)));
+---
+> 				evaluator = new Evaluator(new CompilerContext(cs, new NewDelegateReportPrinter(Log)));
+101c111
+< 				if (File.Exists(KSP.IO.IOUtils.GetFilePathFor(typeof(EmbeddedCSharp), "autorun.cs")))
+---
+> 				if (File.Exists(KSP.IO.IOUtils.GetFilePathFor(typeof(NewEmbeddedCSharp), "autorun.cs")))
+103c113
+< 					code = File.ReadAllText(KSP.IO.IOUtils.GetFilePathFor(typeof(EmbeddedCSharp), "autorun.cs"));
+---
+> 					code = File.ReadAllText(KSP.IO.IOUtils.GetFilePathFor(typeof(NewEmbeddedCSharp), "autorun.cs"));
+107c117
+< 				hidden = !hidden;
+---
+> 				Visible = !Visible;
+113c123
+< 			if (!hidden)
+---
+> 			if (!Visible)
+115,116c125,126
+< 				GUI.skin = AssetBase.GetGUISkin("KSP window 7");
+< 				winPos = GUILayout.Window(8935, winPos, WindowGUI, "MuMech Embedded C# Console");
+---
+> 				//GUI.skin = AssetBase.GetGUISkin("KSP window 7");
+> 				//winPos = GUILayout.Window(8935, winPos, drawWindow, "MuMech Embedded C# Console");
+124c134
+< 		void WindowGUI(int wID)
+---
+> 		protected override void DrawWindow(int wID)
+126,128c136
+< 			GUILayout.BeginHorizontal();
+< 
+< 			fileName = GUILayout.TextField(fileName, GUILayout.ExpandWidth(true));
+---
+> 			growE();
+129a138
+> 			fileName = GUILayout.TextField(fileName, GoE());
+133c142
+< 				File.WriteAllText(KSP.IO.IOUtils.GetFilePathFor(typeof(EmbeddedCSharp), fileName + ".cs"), code);
+---
+> 				File.WriteAllText(KSP.IO.IOUtils.GetFilePathFor(typeof(NewEmbeddedCSharp), fileName + ".cs"), code);
+141c150
+< 				fb.CurrentDirectory = KSP.IO.IOUtils.GetFilePathFor(typeof(EmbeddedCSharp), "");
+---
+> 				fb.CurrentDirectory = KSP.IO.IOUtils.GetFilePathFor(typeof(NewEmbeddedCSharp), "");
+145,146c154
+< 
+< 			GUILayout.EndHorizontal();
+---
+> 			stopE();
+149c157
+< 			codePos = GUILayout.BeginScrollView(codePos, GoE(), GoS());
+---
+> 			codePos = GUILayout.BeginScrollView(codePos, GUILayout.Height(200), GoE());
+176c184
+< 				formattedCode = GUILayout.TextArea(formattedCode, textStyle, GUILayout.ExpandWidth(true), GUILayout.ExpandHeight(true));
+---
+> 				formattedCode = GUILayout.TextArea(formattedCode, textStyle, GoE(), GoS());
+186c194
+< 				code = GUILayout.TextArea(code, textStyle, GUILayout.ExpandWidth(true), GUILayout.ExpandHeight(true));
+---
+> 				code = GUILayout.TextArea(code, textStyle, GoE(), GoS());
+191,192c199,200
+< 			consolePos = GUILayout.BeginScrollView(consolePos, GUILayout.Width(500), GUILayout.Height(100));
+< 			console = GUILayout.TextArea(console, GUILayout.ExpandWidth(true), GUILayout.ExpandHeight(true));
+---
+> 			consolePos = GUILayout.BeginScrollView(consolePos, GoE(), GoS());
+> 			console = GUILayout.TextArea(console, GoE() , GoS());
+196,197c204
+< 
+< 			GUILayout.BeginHorizontal(GUILayout.ExpandWidth(true));
+---
+> 			growE();
+232c239
+< 			codeLine = GUILayout.TextField(codeLine, GUILayout.ExpandWidth(true));
+---
+> 			codeLine = GUILayout.TextField(codeLine, GoE());
+240,241c247,249
+< 			GUILayout.EndHorizontal();
+< 			GUI.DragWindow();
+---
+> 			stopE();
+> 
+> 			// FIXME: Not needed, prevents resizing. GUI.DragWindow();
+273c281
+< 					codeLine = "";
+---
+> 					//codeLine = "";

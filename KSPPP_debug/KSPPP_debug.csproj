@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{5DE9FC18-2618-427A-9DEF-66CDE0B86F75}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <RootNamespace>KSPPP_debug</RootNamespace>
+    <AssemblyName>KSPPP_debug</AssemblyName>
+    <ReleaseVersion>0.0.24.0</ReleaseVersion>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <DebugType>none</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>.</OutputPath>
+    <DefineConstants>DEBUG;</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ConsolePause>false</ConsolePause>
+    <PlatformTarget>x86</PlatformTarget>
+    <additionalargs>-debug:full</additionalargs>
+    <CustomCommands>
+      <CustomCommands>
+        <Command type="Clean" command="rm -rf obj bin" workingdir="${ProjectDir}" />
+      </CustomCommands>
+    </CustomCommands>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <DebugType>none</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>.</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ConsolePause>false</ConsolePause>
+    <PlatformTarget>x86</PlatformTarget>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <ItemGroup>
+    <Compile Include="EmptyClass.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="UnityEngine">
+      <HintPath>..\..\..\KSP_Data\Managed\UnityEngine.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Assembly-CSharp">
+      <HintPath>..\..\..\KSP_Data\Managed\Assembly-CSharp.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+  </ItemGroup>
+</Project>

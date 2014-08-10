@@ -1,0 +1,2 @@
+/media/ssd/steam/SteamApps/common/Kerbal Space Program/GameData/KSPPP/KSPPP_examples.dll
+/media/ssd/steam/SteamApps/common/Kerbal Space Program/GameData_Dev/KSPPP/Examples/obj/x86/Debug/KSPPP_examples.dll
